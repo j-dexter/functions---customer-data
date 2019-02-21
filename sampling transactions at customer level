@@ -1,0 +1,14 @@
+# function for sampling transactions at customer level to speed up workflow devt'
+sample_trxns_at_customer_level <- function(data, sample_fraction) {
+  
+  data %>% 
+    
+    # Get sample cohort customer IDs at customer level 
+    select(subcustomer_sc_id) %>% 
+    distinct(subcustomer_sc_id) %>% 
+    ungroup() %>% 
+    sample_frac(size = sample_fraction) %>% 
+    
+    # Join trxns for sampled cohort only 
+    left_join(data)
+}
