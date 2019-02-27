@@ -1,4 +1,8 @@
 # function for sampling transactions at customer level to speed up workflow devt'
+
+# Takes distinct customers as a sample and then joins back to transactions 
+  # to get those trxns relevant to the sampled customers.
+
 sample_trxns_at_customer_level <- function(data, sample_fraction) {
   
   data %>% 
